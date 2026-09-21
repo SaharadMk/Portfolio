@@ -1,0 +1,561 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Saharad Chimdonthong | Junior Software Developer</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600;700&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg-color: #ffffff;
+        --bg-alt: #f8fafc;
+        --card-bg: #ffffff;
+        --text-color: #0f172a;
+        --text-muted: #475569;
+        --primary-color: #2563eb;
+        --border-color: #e2e8f0;
+        --code-font: "Fira Code", monospace;
+        --sans-font: "Inter", system-ui, -apple-system, sans-serif;
+      }
+
+      [data-theme="dark"] {
+        --bg-color: #0b0f19;
+        --bg-alt: #111827;
+        --card-bg: #1e293b;
+        --text-color: #f8fafc;
+        --text-muted: #94a3b8;
+        --primary-color: #3b82f6;
+        --border-color: #1f2937;
+      }
+
+      /* Smooth Scrolling */
+      html {
+        scroll-behavior: smooth;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        transition:
+          background-color 0.2s,
+          color 0.2s;
+      }
+
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-color);
+        font-family: var(--sans-font);
+        line-height: 1.6;
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      /* Sticky Navigation Bar */
+      nav {
+        width: 100%;
+        border-bottom: 1px solid var(--border-color);
+        background-color: var(--bg-color);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .nav-container {
+        max-width: 1100px;
+        margin: 0 auto;
+        padding: 1rem 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      /* โลโก้ชื่อ กดแล้วเลื่อนไป top */
+      .logo {
+        font-family: var(--code-font);
+        font-size: 1.2rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+      }
+
+      .logo:hover {
+        opacity: 0.8;
+      }
+
+      .nav-right {
+        display: flex;
+        align-items: center;
+        gap: 2rem;
+      }
+
+      /* Links ใน Nav */
+      .nav-links {
+        display: flex;
+        list-style: none;
+        gap: 1.5rem;
+      }
+
+      .nav-links a {
+        font-family: var(--code-font);
+        font-size: 0.95rem;
+        color: var(--text-muted);
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .nav-links a:hover {
+        color: var(--primary-color);
+      }
+
+      .theme-toggle {
+        background: none;
+        border: 1px solid var(--border-color);
+        color: var(--text-color);
+        padding: 0.4rem 0.9rem;
+        border-radius: 20px;
+        cursor: pointer;
+        font-family: var(--code-font);
+        font-size: 0.85rem;
+      }
+
+      .theme-toggle:hover {
+        border-color: var(--primary-color);
+      }
+
+      /* Hero Section */
+      .hero-section {
+        padding: 6rem 0 5rem 0;
+        background: radial-gradient(
+          circle at 10% 20%,
+          rgba(37, 99, 235, 0.05) 0%,
+          transparent 40%
+        );
+        border-bottom: 1px solid var(--border-color);
+        scroll-margin-top: 80px;
+      }
+
+      .hero-greeting {
+        font-family: var(--code-font);
+        font-size: 2rem;
+        font-weight: 700;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .hero-name {
+        font-size: 4rem;
+        font-weight: 800;
+        letter-spacing: -1.5px;
+        line-height: 1.1;
+        margin-bottom: 1.5rem;
+      }
+
+      .hero-name span {
+        color: var(--primary-color);
+        font-family: var(--code-font);
+      }
+
+      .hero-title {
+        font-family: var(--code-font);
+        color: var(--text-muted);
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+      }
+
+      .hero-bio {
+        max-width: 850px;
+        font-size: 1.15rem;
+        color: var(--text-muted);
+        line-height: 1.8;
+        margin-bottom: 2.5rem;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1.25rem;
+      }
+
+      .social-links a {
+        color: var(--text-color);
+        text-decoration: none;
+        font-family: var(--code-font);
+        font-size: 0.95rem;
+        padding: 0.5rem 1rem;
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        background-color: var(--card-bg);
+      }
+
+      .social-links a:hover {
+        color: var(--primary-color);
+        border-color: var(--primary-color);
+      }
+
+      /* General Section Styling */
+      section {
+        padding: 5rem 0;
+        scroll-margin-top: 80px; /* เว้นระยะไม่ให้ Sticky Nav บังหัวข้อ */
+      }
+
+      h2 {
+        font-family: var(--code-font);
+        font-size: 1.75rem;
+        font-weight: 700;
+        margin-bottom: 2.5rem;
+        position: relative;
+      }
+
+      h2::after {
+        content: "";
+        display: block;
+        width: 50px;
+        height: 3px;
+        background-color: var(--primary-color);
+        margin-top: 0.5rem;
+      }
+
+      /* Skills Badges */
+      .skills-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+      }
+
+      .skill-tag {
+        font-family: var(--code-font);
+        background-color: var(--card-bg);
+        border: 1px solid var(--border-color);
+        padding: 0.5rem 1rem;
+        border-radius: 6px;
+        font-size: 0.9rem;
+      }
+
+      .highlight-badge {
+        border-color: var(--primary-color);
+        color: var(--primary-color);
+        font-weight: 600;
+      }
+
+      /* Experience & Projects Cards */
+      .cards-stack {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+      }
+
+      .card {
+        background-color: var(--card-bg);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        padding: 2rem;
+      }
+
+      .featured-card {
+        border-left: 4px solid var(--primary-color);
+      }
+
+      .card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        margin-bottom: 0.4rem;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+      }
+
+      .card h3 {
+        font-size: 1.3rem;
+        font-weight: 700;
+      }
+
+      .date {
+        font-family: var(--code-font);
+        color: var(--text-muted);
+        font-size: 0.85rem;
+      }
+
+      .company {
+        color: var(--primary-color);
+        font-weight: 600;
+        font-size: 1.05rem;
+        margin-bottom: 1.25rem;
+      }
+
+      .card ul {
+        padding-left: 1.25rem;
+        color: var(--text-muted);
+      }
+
+      .card li {
+        margin-bottom: 0.6rem;
+        font-size: 1rem;
+      }
+
+      .card p {
+        color: var(--text-muted);
+        font-size: 1rem;
+        line-height: 1.7;
+      }
+
+      footer {
+        padding: 3rem 0;
+        text-align: center;
+        font-family: var(--code-font);
+        color: var(--text-muted);
+        font-size: 0.85rem;
+        border-top: 1px solid var(--border-color);
+      }
+
+      .logo {
+        font-family: var(--code-font);
+        font-size: 1.4rem; /* ปรับให้ใหญ่ขึ้นดึงสายตา */
+        font-weight: 700;
+        color: var(--text-color);
+        text-decoration: none;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+        letter-spacing: -0.5px; /* กระชับระยะห่างตัวอักษร */
+      }
+
+      .logo-bracket,
+      .logo-slash {
+        color: var(--primary-color);
+        font-weight: 700; /* ปรับให้หนาเท่ากัน */
+        font-size: 1.5rem; /* ขยายสัญลักษณ์ให้ใหญ่กว่าตัวหนังสือเล็กน้อย */
+      }
+
+      @media (max-width: 768px) {
+        .hero-name {
+          font-size: 2.75rem;
+        }
+        .nav-links {
+          gap: 0.75rem;
+        }
+        .nav-links a {
+          font-size: 0.85rem;
+        }
+      }
+    </style>
+  </head>
+  <body id="top">
+    <!-- Top Navigation Bar -->
+    <nav>
+      <div class="nav-container">
+        <!-- โลโก้ชื่อ กดแล้วเลื่อนกลับขึ้นบนสุด -->
+        <a href="#top" class="logo">
+          <span class="logo-bracket">&lt;</span>
+          <span class="logo-text">Saharad.C</span>
+          <span class="logo-slash">/&gt;</span>
+        </a>
+
+        <div class="nav-right">
+          <!-- เมนู Navigation ตาม DevPortfolio -->
+          <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+          </ul>
+
+          <button class="theme-toggle" id="themeBtn">🌙 Dark Mode</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero / About Section -->
+    <div class="hero-section" id="about">
+      <div class="container">
+        <div class="hero-greeting">Hello! 👋</div>
+        <h1 class="hero-name">I'm <span>Saharad Chimdonthong</span></h1>
+        <div class="hero-title">Junior Software Developer</div>
+
+        <p class="hero-bio">
+          Junior Software Developer with a background in Mechatronics
+          Engineering and hands-on experience in manufacturing process control
+          and operational efficiency. Highly motivated to transition into
+          full-stack software development, skilled in building web applications
+          using JavaScript, HTML/CSS, React, Node.js, Express.js, Relational
+          Databases, and MongoDB. Leverages an analytical engineering mindset,
+          root-cause troubleshooting capabilities, and strong attention to
+          detail to build reliable, business-aligned software solutions.
+        </p>
+
+        <div class="social-links">
+          <a href="mailto:saharad.ch@gmail.com">✉️ Email</a>
+          <a href="tel:+66853849312">📞 Call</a>
+          <a href="https://github.com/sahardchd-ai" target="_blank"
+            >💻 GitHub</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <main class="container">
+      <!-- Skills Section -->
+      <section>
+        <h2>Skills & Technical Competencies</h2>
+        <div class="skills-grid">
+          <span class="skill-tag highlight-badge">JavaScript (ES6+)</span>
+          <span class="skill-tag highlight-badge">React</span>
+          <span class="skill-tag highlight-badge">Node.js</span>
+          <span class="skill-tag highlight-badge">Express.js</span>
+          <span class="skill-tag">HTML5 / CSS3</span>
+          <span class="skill-tag">Relational Databases</span>
+          <span class="skill-tag">MongoDB</span>
+          <span class="skill-tag">Git & GitHub</span>
+          <span class="skill-tag">Problem-solving</span>
+          <span class="skill-tag">Root-cause Analysis</span>
+          <span class="skill-tag">Process Optimization</span>
+        </div>
+      </section>
+
+      <!-- Projects Section -->
+      <section id="projects">
+        <h2>Projects</h2>
+        <div class="cards-stack">
+          <div class="card">
+            <div class="card-header">
+              <h3>Robotic Arm with Plasma Cutter</h3>
+            </div>
+            <p>
+              Designed robotic arm model and programmed automated execution for
+              specific cutting tasks. Worked on the maintenance,
+              troubleshooting, and efficiency enhancement of the robotic system.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Experience Section -->
+      <section id="experience">
+        <h2>Experience</h2>
+        <div class="cards-stack">
+          <!-- 1. Full-Stack Trainee -->
+          <div class="card featured-card">
+            <div class="card-header">
+              <h3>Full-Stack Web Development Trainee</h3>
+              <span class="date">June 2026 - October 2026</span>
+            </div>
+            <div class="company">
+              Generation Thailand (Junior Software Developer Bootcamp)
+            </div>
+            <ul>
+              <li>
+                Successfully completed an intensive full-stack web development
+                training program, developing web applications using HTML, CSS,
+                JavaScript, React, Node.js, Express.js, Relational Databases,
+                and MongoDB.
+              </li>
+              <li>
+                Strengthened problem-solving, debugging, and software
+                development skills through practical coding assignments and
+                hands-on project building.
+              </li>
+            </ul>
+          </div>
+
+          <!-- 2. Production Controller -->
+          <div class="card">
+            <div class="card-header">
+              <h3>Production Controller</h3>
+              <span class="date">2023 - 2024</span>
+            </div>
+            <div class="company">Royal Technology (Thailand) Co., Ltd.</div>
+            <ul>
+              <li>
+                Monitored and managed daily manufacturing line operations to
+                ensure smooth workflow, minimal downtime, and high quality
+                standards.
+              </li>
+              <li>
+                Investigated root causes of production issues, implemented
+                troubleshooting solutions, and generated detailed summary
+                reports for management.
+              </li>
+              <li>
+                Optimized machinery and work processes, successfully increasing
+                production capacity and operational efficiency.
+              </li>
+            </ul>
+          </div>
+
+          <!-- 3. Engineering Intern -->
+          <div class="card">
+            <div class="card-header">
+              <h3>Engineering Intern</h3>
+              <span class="date">July 2024 - September 2024</span>
+            </div>
+            <div class="company">Line Instrument Co., Ltd.</div>
+            <ul>
+              <li>
+                Assisted in electrical wiring, equipment installation, and
+                control panel assembly for industrial applications.
+              </li>
+              <li>
+                Designed a duck room temperature controller MDB for CPF
+                (Thailand) Public Company Limited.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Education Section -->
+      <section id="education">
+        <h2>Education</h2>
+        <div class="card">
+          <div class="card-header">
+            <h3>Bachelor of Mechatronics Engineering</h3>
+            <span class="date">2019 - 2023</span>
+          </div>
+          <div class="company">
+            King Mongkut's Institute of Technology Ladkrabang
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        <p>
+          &copy; 2026 Saharad Chimdonthong. Designed & Built with inspiration
+          from DevPortfolio.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Theme Switcher Script -->
+    <script>
+      const themeBtn = document.getElementById("themeBtn");
+      themeBtn.addEventListener("click", () => {
+        const currentTheme = document.body.getAttribute("data-theme");
+        if (currentTheme === "dark") {
+          document.body.removeAttribute("data-theme");
+          themeBtn.textContent = "🌙 Dark Mode";
+        } else {
+          document.body.setAttribute("data-theme", "dark");
+          themeBtn.textContent = "☀️ Light Mode";
+        }
+      });
+    </script>
+  </body>
+</html>
